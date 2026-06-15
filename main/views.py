@@ -1,5 +1,6 @@
 from .serializers  import (CompanySerializer, WorkerSerializer, BuildingSerializer, CommentSerializer)
 from .models import (Company, Worker, Building, Comment)
+from .permision import MyAuthenticated, CommentAuthorPermission
 from rest_framework.viewsets import ModelViewSet
 
 class CompanyViewSet(ModelViewSet):
@@ -17,4 +18,5 @@ class BuildingViewSet(ModelViewSet):
 class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    permission_classes = [MyAuthenticated, CommentAuthorPermission]
 
